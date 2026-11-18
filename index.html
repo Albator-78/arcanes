@@ -1,0 +1,298 @@
+const ARCANES = [
+  // ── 22 ARCANES MAJEURS ──
+  { roman:"0",    name:"Le Fou",             symbol:"🎭", suit:null,
+    pos1:"Le Fou somatise",                  pos2:"l'expérience",                     pos3:"du vécu" },
+  { roman:"I",    name:"Le Bateleur",        symbol:"🪄", suit:null,
+    pos1:"Le Bateleur transmute",            pos2:"les éléments",                     pos3:"sur la table" },
+  { roman:"II",   name:"La Papesse",         symbol:"📖", suit:null,
+    pos1:"La Papesse regarde",               pos2:"la morale",                        pos3:"à l'intérieur" },
+  { roman:"III",  name:"L'Impératrice",      symbol:"🌿", suit:null,
+    pos1:"L'Impératrice évalue",             pos2:"la stabilité",                     pos3:"du foyer" },
+  { roman:"IV",   name:"L'Empereur",         symbol:"👑", suit:null,
+    pos1:"L'Empereur débat de",              pos2:"l'autorité",                       pos3:"dans la cité" },
+  { roman:"V",    name:"Le Pape",            symbol:"⛪", suit:null,
+    pos1:"Le Pape bénit",                    pos2:"les sujets",                       pos3:"dans la foi" },
+  { roman:"VI",   name:"Les Amoureux",       symbol:"💞", suit:null,
+    pos1:"Les Amoureux se passionnent pour", pos2:"la prochaine rencontre",           pos3:"se dessinant" },
+  { roman:"VII",  name:"Le Chariot",         symbol:"⚔️", suit:null,
+    pos1:"Le Chariot avance",                pos2:"avec la volonté",                  pos3:"en soumission" },
+  { roman:"VIII", name:"La Justice",         symbol:"⚖️", suit:null,
+    pos1:"La Justice tranche",               pos2:"le vrai du faux",                  pos3:"avec minutie" },
+  { roman:"IX",   name:"L'Ermite",           symbol:"🕯️", suit:null,
+    pos1:"L'Ermite fait avancer",            pos2:"avec la lampe de la connaissance", pos3:"sous les arches de la terre" },
+  { roman:"X",    name:"La Roue de Fortune", symbol:"🔮", suit:null,
+    pos1:"La Roue de Fortune actionne",      pos2:"les oracles",                      pos3:"donnant la claire vision" },
+  { roman:"XI",   name:"La Force",           symbol:"🦁", suit:null,
+    pos1:"La Force dompte",                  pos2:"le lion",                          pos3:"pour œuvrer" },
+  { roman:"XII",  name:"Le Pendu",           symbol:"🙃", suit:null,
+    pos1:"Le Pendu fait balancer",           pos2:"entre les choix",                  pos3:"de conscience" },
+  { roman:"XIII", name:"L'Arcane sans nom",  symbol:"☠️", suit:null,
+    pos1:"L'Arcane sans nom détruit",        pos2:"les miasmes",                      pos3:"annonçant un jour nouveau" },
+  { roman:"XIV",  name:"La Tempérance",      symbol:"🏺", suit:null,
+    pos1:"La Tempérance transvase",          pos2:"l'âme",                            pos3:"du nectar de vie" },
+  { roman:"XV",   name:"Le Diable",          symbol:"🔗", suit:null,
+    pos1:"Le Diable exerce",                 pos2:"le sens",                          pos3:"de la créativité" },
+  { roman:"XVI",  name:"La Maison-Dieu",     symbol:"⚡", suit:null,
+    pos1:"La Maison-Dieu impose",            pos2:"l'esprit de changement",           pos3:"dans la contrariété" },
+  { roman:"XVII", name:"L'Étoile",           symbol:"⭐", suit:null,
+    pos1:"L'Étoile nourrit",                 pos2:"les états d'âme",                  pos3:"dévoilant le doute" },
+  { roman:"XVIII",name:"La Lune",            symbol:"🌙", suit:null,
+    pos1:"La Lune attire",                   pos2:"le substantiel",                   pos3:"de la matière" },
+  { roman:"XIX",  name:"Le Soleil",          symbol:"☀️", suit:null,
+    pos1:"Le Soleil sollicite",              pos2:"l'ego",                            pos3:"dans l'amitié solide" },
+  { roman:"XX",   name:"Le Jugement",        symbol:"🎺", suit:null,
+    pos1:"Le Jugement catalyse",             pos2:"une renaissance",                  pos3:"en un recueillement" },
+  { roman:"XXI",  name:"Le Monde",           symbol:"🌍", suit:null,
+    pos1:"Le Monde se façonne par",          pos2:"le refreinement",                  pos3:"de nombreux désirs" },
+
+  // ── BÂTONS ──
+  { roman:"As", name:"As de Bâtons",        symbol:"🪵", suit:"Bâtons", suitColor:"#b8621a",
+    pos1:"L'As de Bâton rectifie",          pos2:"l'initiative",           pos3:"avec rigueur" },
+  { roman:"2",  name:"2 de Bâtons",         symbol:"🪵", suit:"Bâtons", suitColor:"#b8621a",
+    pos1:"Le 2 de Bâton distingue",         pos2:"les probabilités",       pos3:"dans les choix" },
+  { roman:"3",  name:"3 de Bâtons",         symbol:"🪵", suit:"Bâtons", suitColor:"#b8621a",
+    pos1:"Le 3 de Bâton attise",            pos2:"la formation",           pos3:"du conceptuel" },
+  { roman:"4",  name:"4 de Bâtons",         symbol:"🪵", suit:"Bâtons", suitColor:"#b8621a",
+    pos1:"Le 4 de Bâton guette",            pos2:"les manifestations",     pos3:"du multiple" },
+  { roman:"5",  name:"5 de Bâtons",         symbol:"🪵", suit:"Bâtons", suitColor:"#b8621a",
+    pos1:"Le 5 de Bâton dilate",            pos2:"la matière",             pos3:"idéalement" },
+  { roman:"6",  name:"6 de Bâtons",         symbol:"🪵", suit:"Bâtons", suitColor:"#b8621a",
+    pos1:"Le 6 de Bâton fait émaner",       pos2:"les avatars",            pos3:"éternellement double" },
+  { roman:"7",  name:"7 de Bâtons",         symbol:"🪵", suit:"Bâtons", suitColor:"#b8621a",
+    pos1:"Le 7 de Bâton régit",             pos2:"l'émanation",            pos3:"littéralement" },
+  { roman:"8",  name:"8 de Bâtons",         symbol:"🪵", suit:"Bâtons", suitColor:"#b8621a",
+    pos1:"Le 8 de Bâton accepte",           pos2:"l'invention",            pos3:"dans la fiction" },
+  { roman:"9",  name:"9 de Bâtons",         symbol:"🪵", suit:"Bâtons", suitColor:"#b8621a",
+    pos1:"Le 9 de Bâton applique",          pos2:"une correction",         pos3:"en prééminence" },
+  { roman:"10", name:"10 de Bâtons",        symbol:"🪵", suit:"Bâtons", suitColor:"#b8621a",
+    pos1:"Le 10 de Bâton promet",           pos2:"la verge instructive",   pos3:"rigoureusement" },
+  { roman:"V",  name:"Valet de Bâtons",     symbol:"🪵", suit:"Bâtons", suitColor:"#b8621a",
+    pos1:"Le Valet de Bâton sert à",        pos2:"l'autorité",             pos3:"de la régence" },
+  { roman:"C",  name:"Cavalier de Bâtons",  symbol:"🪵", suit:"Bâtons", suitColor:"#b8621a",
+    pos1:"Le Cavalier de Bâton requiert",   pos2:"le patriarcat",          pos3:"du domaine de la lutte" },
+  { roman:"R♀", name:"Reine de Bâtons",     symbol:"🪵", suit:"Bâtons", suitColor:"#b8621a",
+    pos1:"La Reine de Bâton compulse",      pos2:"le suffrage",            pos3:"populaire" },
+  { roman:"R♂", name:"Roi de Bâtons",       symbol:"🪵", suit:"Bâtons", suitColor:"#b8621a",
+    pos1:"Le Roi de Bâton exerce",          pos2:"le joug",                pos3:"avec force" },
+
+  // ── DENIERS ──
+  { roman:"As", name:"As de Deniers",       symbol:"🪙", suit:"Deniers", suitColor:"#8a7020",
+    pos1:"L'As de Denier donne",            pos2:"la possibilité d'amasser",    pos3:"en entreprenant" },
+  { roman:"2",  name:"2 de Deniers",        symbol:"🪙", suit:"Deniers", suitColor:"#8a7020",
+    pos1:"Le 2 de Denier reproduit",        pos2:"la potentialité",             pos3:"en la cible" },
+  { roman:"3",  name:"3 de Deniers",        symbol:"🪙", suit:"Deniers", suitColor:"#8a7020",
+    pos1:"Le 3 de Denier expose",           pos2:"la connaissance intérieure",  pos3:"par l'introspection" },
+  { roman:"4",  name:"4 de Deniers",        symbol:"🪙", suit:"Deniers", suitColor:"#8a7020",
+    pos1:"Le 4 de Denier multiplie",        pos2:"le multiple",                 pos3:"en l'organisation" },
+  { roman:"5",  name:"5 de Deniers",        symbol:"🪙", suit:"Deniers", suitColor:"#8a7020",
+    pos1:"Le 5 de Denier place",            pos2:"l'organisation",              pos3:"en établissant la réflexion" },
+  { roman:"6",  name:"6 de Deniers",        symbol:"🪙", suit:"Deniers", suitColor:"#8a7020",
+    pos1:"Le 6 de Denier oriente",          pos2:"l'abondance",                 pos3:"dans le monde intérieur" },
+  { roman:"7",  name:"7 de Deniers",        symbol:"🪙", suit:"Deniers", suitColor:"#8a7020",
+    pos1:"Le 7 de Denier focalise",         pos2:"le nominal",                  pos3:"du supérieur" },
+  { roman:"8",  name:"8 de Deniers",        symbol:"🪙", suit:"Deniers", suitColor:"#8a7020",
+    pos1:"Le 8 de Denier met en place",     pos2:"les fondations",              pos3:"de la stabilité" },
+  { roman:"9",  name:"9 de Deniers",        symbol:"🪙", suit:"Deniers", suitColor:"#8a7020",
+    pos1:"Le 9 de Denier maîtrise",         pos2:"l'apport",                    pos3:"de l'antériorité" },
+  { roman:"10", name:"10 de Deniers",       symbol:"🪙", suit:"Deniers", suitColor:"#8a7020",
+    pos1:"Le 10 de Denier dévoile",         pos2:"le pouvoir",                  pos3:"intrinsèque" },
+  { roman:"V",  name:"Valet de Deniers",    symbol:"🪙", suit:"Deniers", suitColor:"#8a7020",
+    pos1:"Le Valet de Denier scrute",       pos2:"le monarque",                 pos3:"en introversion" },
+  { roman:"C",  name:"Cavalier de Deniers", symbol:"🪙", suit:"Deniers", suitColor:"#8a7020",
+    pos1:"Le Cavalier de Denier thésaurise",pos2:"cela",                        pos3:"dans les mondanités" },
+  { roman:"R♀", name:"Reine de Deniers",    symbol:"🪙", suit:"Deniers", suitColor:"#8a7020",
+    pos1:"La Reine de Denier se présente devant", pos2:"les fidèles",           pos3:"en triomphe" },
+  { roman:"R♂", name:"Roi de Deniers",      symbol:"🪙", suit:"Deniers", suitColor:"#8a7020",
+    pos1:"Le Roi de Denier engrange",       pos2:"l'occulte",                   pos3:"séculaire" },
+
+  // ── ÉPÉES ──
+  { roman:"As", name:"As d'Épées",          symbol:"⚔️",  suit:"Épées", suitColor:"#5a5a7a",
+    pos1:"L'As d'Épée volatilise",          pos2:"les acquis rhétoriques",  pos3:"dans la dialectique" },
+  { roman:"2",  name:"2 d'Épées",           symbol:"⚔️",  suit:"Épées", suitColor:"#5a5a7a",
+    pos1:"Le 2 d'Épée entoure",             pos2:"les mentalités",          pos3:"en changement" },
+  { roman:"3",  name:"3 d'Épées",           symbol:"⚔️",  suit:"Épées", suitColor:"#5a5a7a",
+    pos1:"Le 3 d'Épée pénètre",             pos2:"les conceptions",         pos3:"potentiellement là" },
+  { roman:"4",  name:"4 d'Épées",           symbol:"⚔️",  suit:"Épées", suitColor:"#5a5a7a",
+    pos1:"Le 4 d'Épée complète",            pos2:"les idées",               pos3:"en puissance" },
+  { roman:"5",  name:"5 d'Épées",           symbol:"⚔️",  suit:"Épées", suitColor:"#5a5a7a",
+    pos1:"Le 5 d'Épée transperce",          pos2:"les archétypes",          pos3:"en rénovation" },
+  { roman:"6",  name:"6 d'Épées",           symbol:"⚔️",  suit:"Épées", suitColor:"#5a5a7a",
+    pos1:"Le 6 d'Épée relie",               pos2:"l'informel",              pos3:"par irisation" },
+  { roman:"7",  name:"7 d'Épées",           symbol:"⚔️",  suit:"Épées", suitColor:"#5a5a7a",
+    pos1:"Le 7 d'Épée essaime",             pos2:"la non dualité",          pos3:"par induction" },
+  { roman:"8",  name:"8 d'Épées",           symbol:"⚔️",  suit:"Épées", suitColor:"#5a5a7a",
+    pos1:"Le 8 d'Épée s'intègre dans",      pos2:"la totalité",             pos3:"probablement maintenant" },
+  { roman:"9",  name:"9 d'Épées",           symbol:"⚔️",  suit:"Épées", suitColor:"#5a5a7a",
+    pos1:"Le 9 d'Épée synthétise",          pos2:"les prémices",            pos3:"intégralement" },
+  { roman:"10", name:"10 d'Épées",          symbol:"⚔️",  suit:"Épées", suitColor:"#5a5a7a",
+    pos1:"Le 10 d'Épée sublime",            pos2:"les perfections",         pos3:"éthiquement" },
+  { roman:"V",  name:"Valet d'Épées",       symbol:"⚔️",  suit:"Épées", suitColor:"#5a5a7a",
+    pos1:"Le Valet d'Épée représente",      pos2:"le royaume",              pos3:"dans l'Homme" },
+  { roman:"C",  name:"Cavalier d'Épées",    symbol:"⚔️",  suit:"Épées", suitColor:"#5a5a7a",
+    pos1:"Le Cavalier d'Épée va vers",      pos2:"la joute verbale",        pos3:"indubitablement" },
+  { roman:"R♀", name:"Reine d'Épées",       symbol:"⚔️",  suit:"Épées", suitColor:"#5a5a7a",
+    pos1:"La Reine d'Épée conseille",       pos2:"l'époux belliqueux",      pos3:"en diplomatie" },
+  { roman:"R♂", name:"Roi d'Épées",         symbol:"⚔️",  suit:"Épées", suitColor:"#5a5a7a",
+    pos1:"Le Roi d'Épée est",               pos2:"la gnose",                pos3:"indicible" },
+
+  // ── COUPES ──
+  { roman:"As", name:"As de Coupes",        symbol:"🏆", suit:"Coupes", suitColor:"#2a6496",
+    pos1:"L'As de Coupe promet",            pos2:"l'amour vrai",               pos3:"rendant libre" },
+  { roman:"2",  name:"2 de Coupes",         symbol:"🏆", suit:"Coupes", suitColor:"#2a6496",
+    pos1:"Le 2 de Coupe fait éclore",       pos2:"la convergence mutuelle",    pos3:"vers la communion" },
+  { roman:"3",  name:"3 de Coupes",         symbol:"🏆", suit:"Coupes", suitColor:"#2a6496",
+    pos1:"Le 3 de Coupe aligne",            pos2:"la forme désirée",           pos3:"en l'état naturel" },
+  { roman:"4",  name:"4 de Coupes",         symbol:"🏆", suit:"Coupes", suitColor:"#2a6496",
+    pos1:"Le 4 de Coupe fait pousser",      pos2:"le mythe universel",         pos3:"collectivement" },
+  { roman:"5",  name:"5 de Coupes",         symbol:"🏆", suit:"Coupes", suitColor:"#2a6496",
+    pos1:"Le 5 de Coupe range",             pos2:"la stabilité",               pos3:"philosophale" },
+  { roman:"6",  name:"6 de Coupes",         symbol:"🏆", suit:"Coupes", suitColor:"#2a6496",
+    pos1:"Le 6 de Coupe engendre",          pos2:"l'hermaphrodite",            pos3:"par le consentement" },
+  { roman:"7",  name:"7 de Coupes",         symbol:"🏆", suit:"Coupes", suitColor:"#2a6496",
+    pos1:"Le 7 de Coupe installe",          pos2:"la détermination",           pos3:"dans la mutation pertinente" },
+  { roman:"8",  name:"8 de Coupes",         symbol:"🏆", suit:"Coupes", suitColor:"#2a6496",
+    pos1:"Le 8 de Coupe donne et reçoit",   pos2:"la variation",               pos3:"instantanément" },
+  { roman:"9",  name:"9 de Coupes",         symbol:"🏆", suit:"Coupes", suitColor:"#2a6496",
+    pos1:"Le 9 de Coupe rappelle",          pos2:"les souvenirs",              pos3:"inlassablement" },
+  { roman:"10", name:"10 de Coupes",        symbol:"🏆", suit:"Coupes", suitColor:"#2a6496",
+    pos1:"Le 10 de Coupe reproduit",        pos2:"l'amour agape",              pos3:"inconditionnellement" },
+  { roman:"V",  name:"Valet de Coupes",     symbol:"🏆", suit:"Coupes", suitColor:"#2a6496",
+    pos1:"Le Valet de Coupe invite",        pos2:"le prochain",                pos3:"au banquet" },
+  { roman:"C",  name:"Cavalier de Coupes",  symbol:"🏆", suit:"Coupes", suitColor:"#2a6496",
+    pos1:"Le Cavalier de Coupe parade vers",pos2:"l'assemblée",                pos3:"dans l'empathie réciproque" },
+  { roman:"R♀", name:"Reine de Coupes",     symbol:"🏆", suit:"Coupes", suitColor:"#2a6496",
+    pos1:"La Reine de Coupe réconcilie",    pos2:"les antagonismes",           pos3:"de l'atavisme" },
+  { roman:"R♂", name:"Roi de Coupes",       symbol:"🏆", suit:"Coupes", suitColor:"#2a6496",
+    pos1:"Le Roi de Coupe éprouve",         pos2:"l'amour agape",              pos3:"par magnanimité" }
+];
+
+const POS_LABELS = ["Le sujet agissant", "L'objet en jeu", "Le lieu & la manière"];
+const POS_KEYS   = ["pos1", "pos2", "pos3"];
+const FRAG_CLASS = ["frag-1", "frag-2", "frag-3"];
+
+let drawnCards = null;
+let flipped = [false, false, false];
+
+/**
+ * Harmonise les jonctions grammaticales (contractions et élisions)
+ * entre deux segments successifs tout en préservant leur séparation.
+ */
+function lierSegments(segA, segB) {
+  let a = segA.trim();
+  let b = segB.trim();
+
+  // Contractions avec "de" en fin de premier segment
+  if (/\bde$/i.test(a)) {
+    if (/^le\s+/i.test(b)) {
+      return [a.replace(/\bde$/i, "du"), b.replace(/^le\s+/i, "")];
+    }
+    if (/^les\s+/i.test(b)) {
+      return [a.replace(/\bde$/i, "des"), b.replace(/^les\s+/i, "")];
+    }
+    if (/^[aeiouyàâäéèêëîïôöùûüœæh]/i.test(b)) {
+      return [a.replace(/\bde$/i, "d'"), b, true]; // true = sans espace
+    }
+  }
+
+  // Contractions avec "à" en fin de premier segment
+  if (/\bà$/i.test(a)) {
+    if (/^le\s+/i.test(b)) {
+      return [a.replace(/\bà$/i, "au"), b.replace(/^le\s+/i, "")];
+    }
+    if (/^les\s+/i.test(b)) {
+      return [a.replace(/\bà$/i, "aux"), b.replace(/^les\s+/i, "")];
+    }
+  }
+
+  return [a, b, false];
+}
+
+function drawCards() {
+  document.getElementById('draw-btn').disabled = true;
+  const pool = [...ARCANES];
+  drawnCards = [];
+
+  for (let i = 0; i < 3; i++) {
+    const idx = Math.floor(Math.random() * pool.length);
+    drawnCards.push(pool.splice(idx, 1)[0]);
+  }
+
+  flipped = [false, false, false];
+
+  drawnCards.forEach((card, i) => {
+    const bar = card.suitColor
+      ? `<div style="position:absolute;top:0;left:0;right:0;height:4px;border-radius:8px 8px 0 0;background:${card.suitColor}"></div>`
+      : '';
+    const roman = card.suit ? `${card.roman} · ${card.suit}` : card.roman;
+
+    document.getElementById(`face-${i}`).innerHTML = `
+      ${bar}
+      <span class="card-roman">${roman}</span>
+      <span class="card-symbol">${card.symbol}</span>
+      <span class="card-title">${card.name}</span>
+    `;
+    document.getElementById(`frag-${i}`).textContent = card[POS_KEYS[i]];
+    document.getElementById(`slot-${i}`).classList.remove('flipped');
+  });
+
+  document.getElementById('interpretation').classList.remove('visible');
+  document.getElementById('reset-btn').style.display = 'none';
+
+  setTimeout(() => flipCard(0), 400);
+  setTimeout(() => flipCard(1), 950);
+  setTimeout(() => flipCard(2), 1500);
+}
+
+function flipCard(i) {
+  if (!drawnCards || flipped[i]) return;
+  flipped[i] = true;
+  document.getElementById(`slot-${i}`).classList.add('flipped');
+  if (flipped[0] && flipped[1] && flipped[2]) {
+    setTimeout(showInterpretation, 700);
+  }
+}
+
+function showInterpretation() {
+  const [c0, c1, c2] = drawnCards;
+
+  // Harmonisation des jonctions pos1 -> pos2 et pos2 -> pos3
+  const [p1, p2Brut, noSpace12] = lierSegments(c0.pos1, c1.pos2);
+  const [p2, p3, noSpace23]     = lierSegments(p2Brut, c2.pos3);
+
+  const sep12 = noSpace12 ? '' : ' ';
+  const sep23 = noSpace23 ? '' : ' ';
+
+  document.getElementById('interp-text').innerHTML =
+    `<span class="frag-1">${p1}</span>${sep12}` +
+    `<span class="frag-2">${p2}</span>${sep23}` +
+    `<span class="frag-3">${p3}</span>.`;
+
+  document.getElementById('interp-cards').innerHTML = drawnCards.map((card, i) => `
+    <div class="interp-card-detail">
+      <span class="icd-pos">${POS_LABELS[i]}</span>
+      <span class="icd-symbol">${card.symbol}</span>
+      <span class="icd-name">${card.name}</span>
+      <span class="icd-fragment ${FRAG_CLASS[i]}">${card[POS_KEYS[i]]}</span>
+    </div>
+  `).join('');
+
+  const box = document.getElementById('interpretation');
+  box.classList.add('visible');
+  document.getElementById('reset-btn').style.display = 'inline-block';
+  box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function resetReading() {
+  drawnCards = null;
+  flipped = [false, false, false];
+
+  for (let i = 0; i < 3; i++) {
+    document.getElementById(`slot-${i}`).classList.remove('flipped');
+    document.getElementById(`frag-${i}`).textContent = '';
+  }
+
+  document.getElementById('interpretation').classList.remove('visible');
+  document.getElementById('reset-btn').style.display = 'none';
+  document.getElementById('draw-btn').disabled = false;
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
